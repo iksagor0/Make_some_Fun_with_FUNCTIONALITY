@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import "./App.css";
 
@@ -20,15 +21,11 @@ function App() {
 
     const form = new FormData();
 
-    form.append("profile", file);
+    form.append("myfile", file);
     form.append("id", id);
 
     console.log(file);
-    // axios.post("http://localhost:1000/upload", form);
-    fetch("http://localhost:1000/upload", {
-      method: "POST",
-      body: form,
-    });
+    axios.post("http://localhost:1000/upload", form);
   }
 
   return (
@@ -48,7 +45,7 @@ function App() {
         <input
           type="file"
           name="profile"
-          id="profile1"
+          id="profile"
           onChange={handleFileChange}
         />
         <input
